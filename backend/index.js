@@ -8,24 +8,24 @@ const moment = require("moment");
 const { push } = require("./database/index");
 
 var T = new Twit({
-  consumer_key: 'yxzIJm25UzJHWRmfT1tJ7zvIH',
-  consumer_secret: '7tjivAdUwk2tEvucMTFxWfenH3BjLIHvcMn0CXMZjcRTSJLyb3',
-  access_token: '2717149177-9G9yHTKm6dGQx9qO7bQlexpmA3qK4mngnqL4S19',
-  access_token_secret: 'oFL3EtATZLEikm2vdw3QWwdgRyIgb9uBkw8zJ8DTvIO84'
+  consumer_key: "XfX4SQxhErAugHMueBKdEXW04",
+  consumer_secret: "jGOUxYzp5zgOzKh7Yd93iiyqM506VEdv9XvxE6wJpqDPDX9oZG",
+  access_token: "2717149177-O30Wh5X4xHdtNw9Ln6pVRw8lWkDtTqUN5yqz3rE",
+  access_token_secret: "qtrI1RLXP79s46YYyVKaBbV9hTNbQ8RNSH3livn3G0UCL"
   // timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
   // strictSSL: true // optional - requires SSL certificates to be valid.
 });
 
-// var firebaseConfig = {
-//   apiKey: "AIzaSyCE6-PAF2G9pCoapYm5ANPovtbiIjl2Mgo",
-//   authDomain: "swp-final-exam-49609.firebaseapp.com",
-//   databaseURL: "https://swp-final-exam-49609.firebaseio.com",
-//   projectId: "swp-final-exam-49609",
-//   storageBucket: "swp-final-exam-49609.appspot.com",
-//   messagingSenderId: "70623787007",
-//   appId: "1:70623787007:web:72446ab1245061cb"
-// };
-// firebase.initializeApp(firebaseConfig);
+var firebaseConfig = {
+  apiKey: "AIzaSyCE6-PAF2G9pCoapYm5ANPovtbiIjl2Mgo",
+  authDomain: "swp-final-exam-49609.firebaseapp.com",
+  databaseURL: "https://swp-final-exam-49609.firebaseio.com",
+  projectId: "swp-final-exam-49609",
+  storageBucket: "swp-final-exam-49609.appspot.com",
+  messagingSenderId: "70623787007",
+  appId: "1:70623787007:web:72446ab1245061cb"
+};
+firebase.initializeApp(firebaseConfig);
 
 const port = process.env.PORT || "4000";
 
@@ -50,19 +50,20 @@ io.on("connection", client => {
 //     });
 // })
 
-server.get("/", (re1, res) => {
+server.get("/", (req, res) => {
   res.send("hello world");
 });
 
-var stream = T.stream("statuses/filter", { track: "tradewar" });
 let data = {
   time: moment()
     .startOf("minute")
     .toISOString(),
   count: 0
 };
-stream.on("tweet", async function(tweet) {
-  // console.log(tweet);
+
+const stream = T.stream("statuses/filter", { track: "tradewar" });
+stream.on("tweet", async tweet => {
+  console.log(tweet);
   if (
     moment()
       .startOf("minute")

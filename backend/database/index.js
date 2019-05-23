@@ -2,13 +2,13 @@ const firebase = require("firebase/app");
 require("firebase/database");
 
 const apis = {
-  apiKey: "AIzaSyCE6-PAF2G9pCoapYm5ANPovtbiIjl2Mgo",
-  authDomain: "swp-final-exam-49609.firebaseapp.com",
-  databaseURL: "https://swp-final-exam-49609.firebaseio.com",
-  projectId: "swp-final-exam-49609",
-  storageBucket: "swp-final-exam-49609.appspot.com",
-  messagingSenderId: "70623787007",
-  appId: "1:70623787007:web:72446ab1245061cb"
+  apiKey: "AIzaSyC0F7iepEh0dgX5RDAEqmJVbuoCo5sQ36o",
+  authDomain: "tradewar-api.firebaseapp.com",
+  databaseURL: "https://tradewar-api.firebaseio.com",
+  projectId: "tradewar-api",
+  storageBucket: "tradewar-api.appspot.com",
+  messagingSenderId: "579479621397",
+  appId: "1:579479621397:web:438e7de14d1ae041"
 };
 
 firebase.initializeApp(apis);
